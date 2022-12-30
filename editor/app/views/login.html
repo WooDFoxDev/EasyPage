@@ -1,0 +1,33 @@
+{% extends _simple %}
+
+{% block title %}Log in{% endblock %}
+
+{% block simple_title %}EasyPage{% endblock %}
+{% block simple_subtitle %}for your purposes{% endblock %}
+{% block simple_description %}
+<p class="text-dark">
+    Please login to make changes into the page
+</p>
+{% endblock %}
+
+{% block simple_right %}
+<form class="ajax block-ui" method="post" action="{{ redirectPath('/login') }}">
+    {{ csrfField() }}
+    {{ formMethod('post') }}
+
+    {% $_form = ['name' => 'page', 'method' => 'post', 'csrf' => true, 'url' => redirectPath('/page/' . ($page['id'] ?? 'new'))] %}
+
+    <div class="mb-3">
+        {% $_input = ['name' => 'username', 'placeholder' => 'Username', 'icon' => 'face', 'required' => true] %}
+        {% include form_fields/input %}
+    </div>
+
+    <div class="mb-3">
+        {% $_input = ['name' => 'password', 'type' => 'password', 'placeholder' => 'Password', 'icon' => 'key', 'required' => true] %}
+        {% include form_fields/input %}
+    </div>
+
+    <button type="submit" class="btn btn-primary px-5 mt-2 me-3">Log in</button>
+    <a href="/" class="btn btn-outline-secondary px-3 mt-2" title="Go back to frontpage">Return to frontend</a>
+</form>
+{% endblock %}

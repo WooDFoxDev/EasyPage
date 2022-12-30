@@ -1,0 +1,22 @@
+{%
+$__data = [
+'id' => ($_form['name'] ?? 'form') . (ucFirst($_input['name'] ?? 'input')),
+'name' => $_input['name'] ?? 'input',
+'type' => $_input['type'] ?? 'text',
+'value' => $_input['value'] ?? '',
+'title' => $_input['title'] ?? false,
+'icon' => $_input['icon'] ?? false,
+'placeholder' => $_input['placeholder'] ?? false,
+'description' => $_input['description'] ?? false,
+'is_required' => $_input['required'] ?? false,
+'has_validation' => $_input['validation'] ?? false,
+];
+%}
+
+{{ ($__data['title']) ? '<label for="'. $__data['id'] .'" class="form-label text-muted small mt-1 mb-0">'. $__data['title'] .'</label>' : '' }}
+<div class="input-group {{ ($__data['has_validation']) ? 'has-validation' : '' }} validation-{{ $__data['name'] }}">
+    {{ ($__data['icon']) ? '<span class="input-group-text"><span class="material-icons">'. $__data['icon'] .'</span></span>' : '' }}
+    <input type="{{ $__data['type'] }}" name="{{ $__data['name'] }}" class="form-control" id="{{ $__data['id'] }}" aria-describedby="{{ $__data['id'] }}Help {{ $__data['id'] }}Feedback" {{ ($__data['is_required']) ? 'required' : '' }} placeholder="{{ ($__data['placeholder']) ? $__data['placeholder'] : '' }}" value="{{{ $__data['value'] }}}">
+    {{ ($__data['has_validation']) ? '<div id="'. $__data['id'] .'Feedback" class="invalid-feedback">This field can\'t be empty</div>' : '' }}
+</div>
+{{ ($__data['description']) ? '<div id="'. $__data['id'] .'Help" class="form-text">' . $__data['description'] . '</div>' : '' }}

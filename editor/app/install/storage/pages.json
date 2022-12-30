@@ -1,0 +1,38 @@
+{
+  "config": { "auto_increment": 1 },
+  "stored": {
+    "1": {
+      "id": 1,
+      "name": "Default page",
+      "title": "Your page is almost ready",
+      "description": "Stub page",
+      "keywords": "",
+      "heading_text": "Beautiful site",
+      "heading_links": [
+        { "name": "Edit the page", "href": "/editor" },
+        { "name": "", "href": "" }
+      ],
+      "main_text": "Welcome to EasyPage :)",
+      "description_line_1": "Let's edit your page, go to /editor",
+      "description_line_2": "Oh, don't forget to save link to editor",
+      "description_line_3": "",
+      "main_links": [
+        { "name": "Edit me at /editor", "href": "/editor" },
+        { "name": "", "href": "" },
+        { "name": "", "href": "" }
+      ],
+      "copyright_text": "Thanks for using me :)",
+      "color_text": "#1c1c55",
+      "color_link": "#03397c",
+      "color_link_hover": "#0d71ac",
+      "color_background": "#f0f0ff",
+      "color_bg_overlay": "#000000",
+      "color_bg_overlay_opacity": "0",
+      "font_logo": "Roboto Slab",
+      "font_headings": "Roboto Slab",
+      "font_text": "Roboto",
+      "image_background": "0",
+      "image_favicon": "0"
+    }
+  }
+}

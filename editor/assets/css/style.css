@@ -1,0 +1,136 @@
+body {
+  font-family: Roboto, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-highlight {
+  font-family: Saira, sans-serif;
+}
+
+.pt-main-wheader {
+  padding-top: 6rem;
+}
+
+.h-min-100 {
+  min-height: 100%;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 1060;
+}
+
+.es-radio-image label {
+  background-image: var(--background-image, none);
+  background-size: cover;
+  padding-top: 56.25%;
+  display: block;
+}
+
+.es-radio-image-favicon {
+  background-image: url(../img/transparent.png);
+}
+
+.es-radio-image-favicon label {
+  background-size: contain;
+  padding-top: 100%;
+}
+
+.es-imagecard.es-imagecard-favicon {
+  background-image: url(../img/transparent.png);
+}
+
+.es-imagecard .es-imagecard-image {
+  background-image: var(--background-image, none);
+  background-size: cover;
+  padding-top: 56.25%;
+  display: block;
+}
+
+.es-imagecard-favicon .es-imagecard-image {
+  background-size: contain;
+  padding-top: 100%;
+}
+
+.es-imagecard .btn {
+  opacity: 0;
+  transition: opacity 0.1s ease-in;
+}
+
+.es-imagecard:hover .btn {
+  opacity: 1;
+}
+
+/* Colors */
+.bg-gray {
+  background-color: #e3e9f5;
+}
+.text-accent {
+  color: #2563eb;
+}
+
+/* Hero */
+.hero-heading {
+  font-size: 3rem;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+.hero-heading span {
+  font-size: 70%;
+  letter-spacing: -0.05em;
+}
+@media (min-width: 768px) {
+  .hero-heading {
+    font-size: 4rem;
+  }
+}
+@media (min-width: 992px) {
+  .hero-heading {
+    font-size: 3.2rem;
+  }
+}
+@media (min-width: 1200px) {
+  .hero-heading {
+    font-size: 4rem;
+  }
+}
+
+/* Simple page */
+.simple-left h1 {
+  font-size: 3.1rem;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+.simple-left h1 span {
+  font-size: 70%;
+  letter-spacing: -0.095em;
+}
+@media (min-width: 768px) {
+  .simple-left h1 {
+    font-size: 3.4rem;
+  }
+}
+@media (min-width: 992px) {
+  .simple-left h1 {
+    font-size: 3.6rem;
+  }
+}
+@media (min-width: 1200px) {
+  .simple-left h1 {
+    font-size: 4.1rem;
+  }
+}
+@media (min-width: 1400px) {
+  .simple-left h1 {
+    font-size: 4.5rem;
+  }
+}

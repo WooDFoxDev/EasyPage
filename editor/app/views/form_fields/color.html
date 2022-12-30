@@ -1,0 +1,11 @@
+{%
+$__data = [
+'id' => ($_form['name'] ?? 'form') . (ucFirst($_input['name'] ?? 'input')),
+'name' => $_input['name'] ?? 'input',
+'value' => $_input['value'] ?? '#ffffff',
+'title' => $_input['title'] ?? false,
+];
+%}
+
+{{ ($__data['title']) ? '<label for="'. $__data['id'] .'" class="form-label text-muted small mt-1 mb-0">'. $__data['title'] .'</label>' : '' }}
+<input type="color" name="{{ $__data['name'] }}" class="form-control form-control-color" id="{{ $__data['id'] }}" value="{{ $__data['value'] }}" title="{{ $__data['title'] }}">

@@ -1,0 +1,19 @@
+{
+  "name": "egarrido/easypage-test",
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Easypage\\": "../src/",
+      "EasypageTest\\": "/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Ernesto Garrido",
+      "email": "wdf.woodfox@gmail.com"
+    }
+  ],
+  "require": {}
+}

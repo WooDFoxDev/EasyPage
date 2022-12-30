@@ -1,0 +1,68 @@
+/* Globals */
+:root {
+  --es-text-color: "{{ $page['color_text'] }}";
+  --es-link-color: "{{ $page['color_link'] }}";
+  --es-link-hover-color: "{{ $page['color_link_hover'] }}";
+  --es-background-color: "{{ $page['color_background'] }}";
+
+  --es-logo-font: "{{ $page['font_logo'] }}", system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --es-headings-font: "{{ $page['font_headings'] }}", system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --es-text-font: "{{ $page['font_text'] }}", system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+  --es-background-image: "{{ (!empty($page['background_image'])) ? 'url(../img/' . $page['background_image'] . '?v=' . $random . ') center center no-repeat' : 'none' }}";
+  --es-background-overlay: "{{ (!empty($page['color_bg_overlay']) && !empty($page['color_bg_overlay_opacity'])) ? 'rgba(' . HexColorToRGB($page['color_bg_overlay']) . ', ' . ($page['color_bg_overlay_opacity'] / 100) . ')' : 'none' }}";
+}
+
+/* Body */
+html {
+  font-family: var(--es-text-font);
+}
+
+body {
+  background: var(--es-background-image);
+  background-color: var(--es-background-color);
+  background-size: cover;
+}
+
+@media (max-width: 576px) {
+  body {
+    font-size: 80%;
+  }
+}
+
+.root_wrapper {
+  background-color: var(--es-background-overlay);
+}
+
+/* Headings */
+.es-font-logo {
+  font-family: var(--es-logo-font);
+}
+
+.h1,
+.es-font-heading {
+  font-family: var(--es-headings-font);
+}
+
+/* Links */
+a,
+.es-link-color {
+  color: var(--es-link-color);
+  transition: color 0.2s ease-in-out;
+}
+
+a:focus,
+a:hover,
+.es-link-color:focus,
+.es-link-color:hover {
+  color: var(--es-link-hover-color);
+}
+
+/* Text */
+.es-text-color {
+  color: var(--es-text-color);
+}
+
+.es-font-text {
+  font-family: var(--es-text-font);
+}

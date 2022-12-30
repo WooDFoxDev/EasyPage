@@ -1,0 +1,90 @@
+{% extends _layout %}
+
+{% block title %}Your pages{% endblock %}
+
+{% block main %}
+<div class="container mb-4">
+    <div class="row p-4 pb-0 pe-lg-0 pt-lg-2 align-items-center rounded-4 border shadow-lg bg-white">
+        <div class="col-lg-7 p-2 p-lg-4 pt-lg-3">
+            <h1 class="mb-3 display-4">Media library</h1>
+            <p class="lead mb-2">Here you can upload images to use them as backgrounds or as favicons</p>
+        </div>
+        <div class="col-lg-4 mb-3">
+            <form method="post" action="{{ redirectPath('/media/upload') }}" class="ajax block-ui">
+                <div class="row mb-2">
+                    <div class="col-12">
+                        <label for="uploadImage" class="form-label">Upload new image</label>
+                        <input name="image" class="form-control" type="file" id="uploadImage" required>
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="type" value="background" id="uploadTypeBackground" checked>
+                            <label class="form-check-label" for="uploadTypeBackground">
+                                Background
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="type" value="favicon" id="uploadTypeFavicon">
+                            <label class="form-check-label" for="uploadTypeFavicon">
+                                Favicon
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    {% if (!empty($favicons)): %}
+    <div class="col-12 my-2">
+        <p class="lead my-0">Favicons</p>
+    </div>
+    {% foreach ($favicons as $image): %}
+    <div class="col-3 col-sm-2 col-md-2 col-xl-1">
+        <div class="card border-0 rounded-4 shadow-lg mb-4 es-imagecard es-imagecard-favicon position-relative">
+            <div class="card-body p-0">
+                <div class="es-imagecard-image w-100 h-100 rounded-4" for="pageBackgroundImage{{ $image['id'] }}" style="--background-image: url({{ redirectPath('/app/uploads/images/' . $image['preview_name']) }});"></div>
+                <a href="{{ redirectPath('/media/' . $image['id']) }}" class="btn btn-sm btn-danger ajax block-ui position-absolute bottom-0 start-0 ms-2 mb-2" data-method="delete" title="Delete the image">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% endforeach %}
+    {% else : %}
+    <div class="col my-5 text-center">
+        <p class="lead">Oh, sorry :( There is no favicons here right now. Let's upload first?</p>
+    </div>
+    {% endif %}
+</div>
+
+<div class="row">
+    {% if (!empty($backgrounds)): %}
+    <div class="col-12 my-2">
+        <p class="lead my-0">Backgrounds</p>
+    </div>
+    {% foreach ($backgrounds as $image): %}
+    <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+        <div class="card border-0 rounded-4 shadow-lg mb-4 es-imagecard position-relative">
+            <div class="card-body p-0">
+                <div class="es-imagecard-image w-100 h-100 rounded-4" for="pageBackgroundImage{{ $image['id'] }}" style="--background-image: url({{ redirectPath('/app/uploads/images/' . $image['preview_name']) }});"></div>
+                <a href="{{ redirectPath('/media/' . $image['id']) }}" class="btn btn-sm btn-danger ajax block-ui position-absolute bottom-0 start-0 ms-2 mb-2" data-method="delete" title="Delete the image">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% endforeach %}
+    {% else : %}
+    <div class="col my-5 text-center">
+        <p class="lead">Oh, sorry :( There is no backgrounds here right now. Let's upload first?</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

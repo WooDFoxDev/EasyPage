@@ -1,0 +1,68 @@
+/* Globals */
+:root {
+  --es-text-color: #1c1c55;
+  --es-link-color: #03397c;
+  --es-link-hover-color: #0d71ac;
+  --es-background-color: #f0f0ff;
+
+  --es-logo-font: Roboto Slab, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --es-headings-font: Roboto Slab, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --es-text-font: Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+  --es-background-image: none;
+  --es-background-overlay: none;
+}
+
+/* Body */
+html {
+  font-family: var(--es-text-font);
+}
+
+body {
+  background: var(--es-background-image);
+  background-color: var(--es-background-color);
+  background-size: cover;
+}
+
+@media (max-width: 576px) {
+  body {
+    font-size: 80%;
+  }
+}
+
+.root_wrapper {
+  background-color: var(--es-background-overlay);
+}
+
+/* Headings */
+.es-font-logo {
+  font-family: var(--es-logo-font);
+}
+
+.h1,
+.es-font-heading {
+  font-family: var(--es-headings-font);
+}
+
+/* Links */
+a,
+.es-link-color {
+  color: var(--es-link-color);
+  transition: color 0.2s ease-in-out;
+}
+
+a:focus,
+a:hover,
+.es-link-color:focus,
+.es-link-color:hover {
+  color: var(--es-link-hover-color);
+}
+
+/* Text */
+.es-text-color {
+  color: var(--es-text-color);
+}
+
+.es-font-text {
+  font-family: var(--es-text-font);
+}

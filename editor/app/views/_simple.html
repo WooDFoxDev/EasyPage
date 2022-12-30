@@ -1,0 +1,30 @@
+{% extends _root %}
+
+{% block content %}
+<main class="h-min-100 d-flex">
+    <div class="container h-min-100 d-flex col-xxl-8 px-4 py-5">
+        <div class="align-self-center w-100">
+            <div class="row g-5 py-5">
+                <div class="col-12 col-lg-6 simple-left">
+                    <h1 class="fw-bold mb-3 mb-lg-4">{% yield simple_title %}<br>
+                        <span class="small text-accent">{% yield simple_subtitle %}</span>
+                    </h1>
+                    {% yield simple_description %}
+                </div>
+                <div class="col-12 col-lg-6 simple-right">
+                    <div class="card p-4 p-lg-5 border-0 rounded-4 shadow-lg">
+                        {% yield simple_right %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="">
+    <div class="container text-center py-3 text-dark">
+        Made with <span class="material-icons">favorite_border</span> by <a href="https://egarrido.dev?from=easypage"
+            target="_blank" alt="" class="text-dark">Ernesto Garrido</a>
+    </div>
+</footer>
+{% endblock %}

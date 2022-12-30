@@ -1,0 +1,17 @@
+{
+    "name": "egarrido/easypage",
+    "description": "An easy stub-page generator that doesn't require for database or other complicated prerequisites or knowledge",
+    "type": "project",
+    "license": "GPLv3",
+    "autoload": {
+        "psr-4": {
+            "Easypage\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ernesto Garrido",
+            "email": "iam@egarrido.dev"
+        }
+    ]
+}

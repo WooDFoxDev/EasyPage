@@ -1,0 +1,8 @@
+/.vscode*
+/.devcontainer*
+/editor/app/cache*
+/editor/app/uploads*
+/editor/app/storage*
+/editor/app/composer.lock
+/editor/app/tests/vendor*
+/editor/app/tests/composer.lock

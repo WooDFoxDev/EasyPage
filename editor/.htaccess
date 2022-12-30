@@ -1,0 +1,17 @@
+# Block direct access to app files
+RedirectMatch 404 ^/editor/app/(?!uploads).*$
+
+<IfModule mod_rewrite.c>
+
+RewriteEngine on
+
+# URL rewriting to app controller
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?ep_rewrite=$1 [NC,L,QSA]
+
+</IfModule>
+
+# Prevent Browsing and Set Default Resources
+Options -Indexes
+DirectoryIndex index.php

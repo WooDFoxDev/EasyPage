@@ -1,0 +1,54 @@
+{% extends _layout %}
+
+{% block title %}Your pages{% endblock %}
+
+{% block main %}
+<div class="container mb-5">
+    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-4 border shadow-lg bg-white">
+        <div class="col-lg-7 p-2 p-lg-4 pt-lg-3">
+            <h1 class="hero-heading mb-3">
+                Hello there!<br>
+                <span class="text-accent">I'm easy page editor ;)</span>
+            </h1>
+            <div class="toggle-hero d-none">
+                <p class="lead mb-2">Quickly design and customize responsive mobile-first static pages.</p>
+                <p class="mb-1">This is the list of your created pages.</p>
+                <p class="mb-1">You can make unlimited number of pages, but only one of them may be displayed at production side.</p>
+                <p class="mb-1">But you can also export any page and put it into any hosting like a static page, so you don't need to install this engine on every hosting you need.</p>
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-4 mb-4 mb-lg-3">
+                <a href="{{ redirectPath('/') }}page/new" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Add new page</a>
+                <a href="/" class="btn btn-outline-secondary btn-lg px-4 me-md-2">Go to the frontend</a>
+                <a href="#" class="btn btn-outline-secondary btn-lg px-4 me-md-2 toggle toggle-mem" data-target=".toggle-hero">Toggle info</a>
+            </div>
+        </div>
+        <div class="col-lg-4 offset-lg-1 p-0 rounded-4 overflow-hidden shadow-lg">
+            <div class="toggle-hero d-none">
+                <img class="rounded-lg-3" src="{{ redirectPath('/') }}/assets/img/hero-image.png" alt="" width="720">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    {% if (!empty($pages)): %}
+    {% foreach ($pages as $page): %}
+    <div class="col-12 col-md-6 col-xl-4">
+        <div class="card p-3 border-0 rounded-4 shadow-lg mb-4">
+            <div class="card-body">
+                <h5 class="card-title">{{{ $page['name'] }}}</h5>
+                <p class="card-text">{{{ $page['main_text'] }}}</p>
+                <a href="{{ redirectPath('/page') }}/{{ $page['id'] }}" class="btn btn-primary me-2">Edit page</a>
+                <a href="{{ redirectPath('/download/' . $page['id']) }}" class="btn btn-secondary ajax block-iu">Export archive</a>
+            </div>
+        </div>
+    </div>
+    {% endforeach %}
+    {% else : %}
+    <div class="col my-5 text-center">
+        <p class="lead">Oh, sorry :( There is no pages right now. Let's create your first?</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

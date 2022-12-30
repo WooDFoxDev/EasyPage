@@ -1,0 +1,29 @@
+{% extends _root %}
+
+{% block content %}
+<header class="fixed-top bg-white shadow">
+    <div class="container d-flex flex-wrap justify-content-center py-3">
+        <a href="{{ redirectPath('/') }}" class="d-flex align-items-center mb-md-0 me-auto text-dark text-decoration-none">
+            <img src="{{ redirectPath('/') }}assets/img/logo.png" class="bi me-2" width="50" height="50" alt="EasyPage Logo" />
+            <span class="font-highlight fs-3">EasyPage</span>
+        </a>
+
+        <ul class="nav nav-pills py-1">
+            {% yield main_menu %}
+            <li class="nav-item"><a href="{{ redirectPath('/media') }}" class="nav-link">Media</a>
+            <li class="nav-item"><a href="{{ redirectPath('/logout') }}" class="ajax block-ui nav-link text-danger">Log out</a>
+            </li>
+        </ul>
+    </div>
+</header>
+
+<main class="h-min-100 pt-main-wheader">
+    <div class="container py-4">{% yield main %}</div>
+</main>
+
+<footer class="">
+    <div class="container text-center py-3 text-dark">
+        Made with <span class="material-icons">favorite_border</span> by <a href="https://egarrido.dev?from=easypage" target="_blank" alt="" class="text-dark">Ernesto Garrido</a>
+    </div>
+</footer>
+{% endblock %}

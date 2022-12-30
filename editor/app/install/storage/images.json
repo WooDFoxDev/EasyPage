@@ -1,0 +1,17 @@
+{
+  "config": { "auto_increment": 12 },
+  "stored": {
+    "1": { "id": null, "name": "iconE.png", "file_name": "c881e95b7e90.png", "type": "favicon" },
+    "2": { "id": null, "name": "iconA.png", "file_name": "d6b2ab85e154.png", "type": "favicon" },
+    "3": { "id": null, "name": "iconS.png", "file_name": "538176b3ba39.png", "type": "favicon" },
+    "4": { "id": null, "name": "iconY.png", "file_name": "c7483f1b6c1f.png", "type": "favicon" },
+    "5": { "id": null, "name": "arnaud-steckle-dpzp54GkIGI-unsplash.jpg", "file_name": "bf28b4fb2ab1.jpg", "type": "background" },
+    "6": { "id": null, "name": "jess-bailey-l3N9Q27zULw-unsplash.jpg", "file_name": "4fbfbc26e90f.jpg", "type": "background" },
+    "7": { "id": null, "name": "pawel-czerwinski-3-bDL0iRcbI-unsplash.jpg", "file_name": "2eba11658c00.jpg", "type": "background" },
+    "8": { "id": null, "name": "allison-saeng-KOhDyDxZadg-unsplash.jpg", "file_name": "0b9e40e2ba12.jpg", "type": "background" },
+    "9": { "id": null, "name": "arindam-saha-PwzISwC2kLs-unsplash.jpg", "file_name": "2278d2e9c5fe.jpg", "type": "background" },
+    "10": { "id": null, "name": "frank-mckenna-eXHeq48Z-Q4-unsplash.jpg", "file_name": "3b93425c1f6c.jpg", "type": "background" },
+    "11": { "id": null, "name": "nathan-dumlao-SwIh3kr1__U-unsplash.jpg", "file_name": "0e8ba76fe793.jpg", "type": "background" },
+    "12": { "id": null, "name": "wolfgang-hasselmann-pVr6wvUneMk-unsplash.jpg", "file_name": "c93844c635f3.jpg", "type": "background" }
+  }
+}

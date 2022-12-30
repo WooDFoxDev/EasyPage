@@ -1,0 +1,357 @@
+{% extends _layout %}
+
+{% block title %}{{ (isset($page)) ? $page['name'] : 'Add page' }}{% endblock %}
+
+{% block main_menu %}
+<li class="nav-item"><a href="{{ redirectPath('/') }}" class="nav-link text-secondary">&lt; Back</a></li>
+{% endblock %}
+
+{% block main %}
+<div class="card p-3 p-xl-5 mb-4 border-0 rounded-4 shadow-lg">
+    <form class="ajax block-ui" method="post" action="{{ redirectPath('/page/' . ($page['id'] ?? 'new')) }}">
+        {{ csrfField() }}
+        {{ formMethod(isset($page) ? 'patch' : 'post') }}
+
+        {% $_form = ['name' => 'page', 'method' => 'post', 'csrf' => true, 'url' => redirectPath('/page/' . ($page['id'] ?? 'new'))] %}
+
+        <div class="mb-4 pb-4 border-bottom">
+            <div class="row">
+                <div class="col-12 col-lg-4 order-lg-last small">
+                    <h3>Page settings</h3>
+                    <p class="mb-1">Page name is only used for internal purposes, helping you to identify pages.</p>
+                    <p class="mb-1">Title is to be shown in browser tab as a page name</p>
+                    <p class="mb-2">Description and keywords are meta tags that used by search engines to realize, what the page about</p>
+                </div>
+
+                <div class="col-12 col-lg-8">
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            {% $_input = ['name' => 'name', 'title' => 'Page name', 'value' => ($page['name'] ?? ''), 'validation' => true, 'required' => true] %}
+                            {% include form_fields/input %}
+                        </div>
+
+                        <div class="col-12">
+                            {% $_input = ['name' => 'title', 'title' => 'Title (META tag)', 'value' => ($page['title'] ?? ''), 'validation' => true, 'required' => true] %}
+                            {% include form_fields/input %}
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-12 col-lg-6">
+                            {% $_input = ['name' => 'description', 'title' => 'Description (META tag)', 'value' => ($page['description'] ?? ''), 'validation' => true] %}
+                            {% include form_fields/input %}
+                        </div>
+
+                        <div class="col-12 col-lg-6">
+                            {% $_input = ['name' => 'keywords', 'title' => 'Keywords (META tag)', 'value' => ($page['keywords'] ?? ''), 'validation' => true] %}
+                            {% include form_fields/input %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-4 pb-4 border-bottom">
+            <div class="row">
+                <div class="col-12 col-lg-4 order-lg-last small">
+                    <h3>Header</h3>
+                    <p class="mb-2">Put here some text for your header</p>
+                </div>
+
+                <div class="col-12 col-lg-8">
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            {% $_input = ['name' => 'heading_text', 'title' => 'Logotype text', 'value' => ($page['heading_text'] ?? ''), 'validation' => true] %}
+                            {% include form_fields/input %}
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-12 col-md-6">
+                            {% $_input = ['name' => "heading_links[0][name]", 'title' => 'Link name', 'value' => ($page['heading_links'][0]['name'] ?? ''), 'validation' => true] %}
+                            {% include form_fields/input %}
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            {% $_input = ['name' => "heading_links[0][href]", 'title' => 'Link address', 'value' => ($page['heading_links'][0]['href'] ?? ''), 'validation' => true] %}
+                            {% include form_fields/input %}
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-12 col-md-6">
+                            {% $_input = ['name' => "heading_links[1][name]", 'title' => 'Link name', 'value' => ($page['heading_links'][1]['name'] ?? ''), 'validation' => true] %}
+                            {% include form_fields/input %}
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            {% $_input = ['name' => "heading_links[1][href]", 'title' => 'Link address', 'value' => ($page['heading_links'][1]['href'] ?? ''), 'validation' => true] %}
+                            {% include form_fields/input %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-4 pb-4 border-bottom">
+            <div class="row">
+                <div class="col-12 col-lg-4 order-lg-last small">
+                    <h3>Main section</h3>
+                    <p class="mb-2">Empty fields won't be shown on page</p>
+                </div>
+
+                <div class="col-12 col-lg-8">
+                    <div class="row mb-2">
+                        <div class="col">
+                            {% $_input = ['name' => 'main_text', 'title' => 'Main text', 'value' => ($page['main_text'] ?? ''), 'validation' => true] %}
+                            {% include form_fields/input %}
+                        </div>
+
+                        <div class="col-12">
+                            {% $_input = ['name' => 'description_line_1', 'title' => 'Description line', 'value' => ($page['description_line_1'] ?? ''), 'validation' => true] %}
+                            {% include form_fields/input %}
+                        </div>
+
+                        <div class="col-12">
+                            {% $_input = ['name' => 'description_line_2', 'title' => 'Description line', 'value' => ($page['description_line_2'] ?? ''), 'validation' => true] %}
+                            {% include form_fields/input %}
+                        </div>
+
+                        <div class="col-12">
+                            {% $_input = ['name' => 'description_line_3', 'title' => 'Description line', 'value' => ($page['description_line_3'] ?? ''), 'validation' => true] %}
+                            {% include form_fields/input %}
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-12 col-md-6">
+                            {% $_input = ['name' => "main_links[0][name]", 'title' => 'Link name', 'value' => ($page['main_links'][0]['name'] ?? ''), 'validation' => true] %}
+                            {% include form_fields/input %}
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            {% $_input = ['name' => "main_links[0][href]", 'title' => 'Link address', 'value' => ($page['main_links'][0]['href'] ?? ''), 'validation' => true] %}
+                            {% include form_fields/input %}
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-12 col-md-6">
+                            {% $_input = ['name' => "main_links[1][name]", 'title' => 'Link name', 'value' => ($page['main_links'][1]['name'] ?? ''), 'validation' => true] %}
+                            {% include form_fields/input %}
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            {% $_input = ['name' => "main_links[1][href]", 'title' => 'Link address', 'value' => ($page['main_links'][1]['href'] ?? ''), 'validation' => true] %}
+                            {% include form_fields/input %}
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-12 col-md-6">
+                            {% $_input = ['name' => "main_links[2][name]", 'title' => 'Link name', 'value' => ($page['main_links'][2]['name'] ?? ''), 'validation' => true] %}
+                            {% include form_fields/input %}
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            {% $_input = ['name' => "main_links[2][href]", 'title' => 'Link address', 'value' => ($page['main_links'][2]['href'] ?? ''), 'validation' => true] %}
+                            {% include form_fields/input %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-4 pb-4 border-bottom">
+            <div class="row">
+                <div class="col-12 col-lg-4 order-lg-last small">
+                    <h3>Footer</h3>
+                    <p class="mb-2">Put here some text for your footer</p>
+                </div>
+
+                <div class="col-12 col-lg-8">
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            {% $_input = ['name' => 'copyright_text', 'title' => 'Copyright text', 'value' => ($page['copyright_text'] ?? ''), 'validation' => true] %}
+                            {% include form_fields/input %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-4 pb-4 border-bottom">
+            <div class="row">
+                <div class="col-12 col-lg-4 order-lg-last small">
+                    <h3>Fonts and colors</h3>
+                    <p class="mb-2">There are some fonts in field suggestions, but you can input any font name available at <a href="https://fonts.google.com/" title="Media library">Google Fonts</a></p>
+                </div>
+
+                <div class="col-12 col-lg-8">
+                    <div class="row mb-2">
+                        <div class="col-6 col-md-4 col-lg-3">
+                            {% $_input = ['name' => 'font_logo', 'title' => 'Logotype font', 'value' => ($page['font_logo'] ?? 'Roboto'), 'values' => $fonts_list] %}
+                            {% include form_fields/datalist %}
+                        </div>
+
+                        <div class="col-6 col-md-4 col-lg-3">
+                            {% $_input = ['name' => 'font_headings', 'title' => 'Headings font', 'value' => ($page['font_headings'] ?? 'Roboto'), 'values' => $fonts_list] %}
+                            {% include form_fields/datalist %}
+                        </div>
+
+                        <div class="col-12 col-md-4 col-lg-6">
+                            {% $_input = ['name' => 'font_text', 'title' => 'Text font', 'value' => ($page['font_text'] ?? 'Roboto'), 'values' => $fonts_list] %}
+                            {% include form_fields/datalist %}
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-3">
+                            {% $_input = ['name' => 'color_text', 'title' => 'Text color', 'value' => ($page['color_text'] ?? '#000000')] %}
+                            {% include form_fields/color %}
+                        </div>
+
+                        <div class="col-3">
+                            {% $_input = ['name' => 'color_link', 'title' => 'Links color', 'value' => ($page['color_link'] ?? '#03397c')] %}
+                            {% include form_fields/color %}
+                        </div>
+
+                        <div class="col-3">
+                            {% $_input = ['name' => 'color_link_hover', 'title' => 'Links hover', 'value' => ($page['color_link_hover'] ?? '#0d71ac')] %}
+                            {% include form_fields/color %}
+                        </div>
+
+                        <div class="col-3">
+                            {% $_input = ['name' => 'color_background', 'title' => 'Background', 'value' => ($page['color_background'] ?? '#ffffff')] %}
+                            {% include form_fields/color %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-4 pb-4 border-bottom">
+            <div class="row">
+                <div class="col-12 col-lg-4 order-lg-last small">
+                    <h3>Favicon</h3>
+                    <p class="mb-1">Choose an apropriate icon that will be shown in a browser tab</p>
+                    <p class="mb-1">Recommended minimum resolution is 150 x 150px.</p>
+                    <p class="mb-2">Manage favicons <a href="{{ redirectPath('/media') }}" title="Media library">here</a>.</p>
+                </div>
+
+                <div class="col-12 col-lg-8">
+                    <div class="row mb-0">
+                        <div class="col-12">
+                            <div class="form-check ms-2 mb-1">
+                                <input class="form-check-input" type="radio" name="image_favicon" value="0" id="pageFaviconImage" {{ (empty($page['image_favicon'])) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="pageFaviconImage">
+                                    Default
+                                </label>
+                            </div>
+                            <div class="row px-2">
+                                {% if (!empty($favicons_list)): %}
+                                {% foreach ($favicons_list as $image): %}
+                                <div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-1 px-1">
+                                    <div class="form-check p-0 es-radio-image es-radio-image-favicon mb-2 position-relative rounded-4">
+                                        <label class="form-check-label w-100 h-100 rounded-4" for="pageFaviconImage{{ $image['id'] }}" style="--background-image: url({{ redirectPath('/app/uploads/images/' . $image['preview_name']) }});"></label>
+                                        <input class="form-check-input position-absolute top-0 start-0 m-0 ms-2 mt-2" type="radio" name="image_favicon" value="{{ $image['id'] }}" id="pageFaviconImage{{ $image['id'] }}" {{ (!empty($page['image_favicon']) && $page['image_favicon']==$image['id']) ? 'checked' : '' }}>
+                                    </div>
+                                </div>
+                                {% endforeach %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-4 pb-4 border-bottom">
+            <div class="row">
+                <div class="col-12 col-lg-4 order-lg-last small">
+                    <h3>Background</h3>
+                    <p class="mb-1">Select a background image (or not). You might also want to make image lighter or darker using overlay controls, to make text more contrast.</p>
+                    <p class="mb-1">Recommended minimum resolution is FullHD 1920 x 1080px.</p>
+                    <p class="mb-2">Manage backgrounds <a href="{{ redirectPath('/media') }}" title="Media library">here</a>.</p>
+                </div>
+
+                <div class="col-12 col-lg-8">
+                    <div class="row mb-0">
+                        <div class="col">
+                            <div class="form-check ms-2 mb-1">
+                                <input class="form-check-input" type="radio" name="image_background" value="0" id="pageBackgroundImage" {{ (empty($page['image_background'])) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="pageBackgroundImage">
+                                    No image
+                                </label>
+                            </div>
+                            <div class="row px-2">
+                                {% if (!empty($backgrounds_list)): %}
+                                {% foreach ($backgrounds_list as $image): %}
+                                <div class="col-4 col-md-3 col-lg-3 col-xl-2 px-1">
+                                    <div class="form-check p-0 es-radio-image mb-2 position-relative rounded-4">
+                                        <label class="form-check-label w-100 h-100 rounded-4" for="pageBackgroundImage{{ $image['id'] }}" style="--background-image: url({{ redirectPath('/app/uploads/images/' . $image['preview_name']) }});"></label>
+                                        <input class="form-check-input position-absolute top-0 start-0 m-0 ms-2 mt-2" type="radio" name="image_background" value="{{ $image['id'] }}" id="pageBackgroundImage{{ $image['id'] }}" {{ (!empty($page['image_background']) && $page['image_background']==$image['id']) ? 'checked' : '' }}>
+                                    </div>
+                                </div>
+                                {% endforeach %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-4">
+                            {% $_input = ['name' => 'color_bg_overlay', 'title' => 'BG overlay color', 'value' => ($page['color_bg_overlay'] ?? '#000000')] %}
+                            {% include form_fields/color %}
+                        </div>
+
+                        <div class="col-8">
+                            <label for="pageColor_bg_overlay_opacity" class="form-label small text-muted mb-0">BG overlay opacity</label>
+                            <input name="color_bg_overlay_opacity" type="range" class="form-range" value="{{ ($page['color_bg_overlay_opacity'] ?? 0) }}" min="0" max="100" step="0.5" id="pageColor_bg_overlay_opacity">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">{{ (isset($page)) ? 'Save changes' : 'Add page' }}</button>
+
+        <div class="form-check d-inline-block ms-3">
+            <input class="form-check-input" type="checkbox" name="export_on_save" id="pageExport_on_save">
+            <label class="form-check-label" for="pageExport_on_save">
+                Export to frontend after saving
+            </label>
+        </div>
+    </form>
+</div>
+
+{% if (isset($page)) : %}
+<div class="card p-3 p-xl-5 mb-4 border-0 rounded-4 shadow-lg">
+    <p>Changes to the page are only applied after saving, so use export only after saving the page.</p>
+
+    <div class="">
+        <a href="{{ redirectPath('/export/' . $page['id']) }}" class="btn btn-primary my-1 me-1 ajax block-ui" title="Set the page to frontend, rewrite existing one">Export to the frontend</a>
+        <a href="{{ redirectPath('/download/' . $page['id']) }}" class="btn btn-primary my-1 me-1 ajax block-ui" title="Get an archive to put into an another server">Export as an archive</a>
+        <a href="#" class="btn btn-secondary my-1 me-1" title="Function is not ready now, coming soon">View in sandbox (unavailable now)</a>
+    </div>
+</div>
+
+<div class="card p-3 p-xl-5 border-0 rounded-4 shadow-lg">
+    <p>You can delete this page, but once deleted, it can't be restored. Be careful!</p>
+
+    <form class="ajax block-ui" method="post" action="{{ redirectPath('/page') }}/{{ $page['id'] }}">
+        {{ csrfField() }}
+        {{ formMethod('delete') }}
+
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" value="" id="deletePageConfirm" required>
+            <label class="form-check-label" for="deletePageConfirm">
+                Check this checkbox if you are sure
+            </label>
+        </div>
+
+        <button type="submit" class="btn btn-danger">Delete page</button>
+    </form>
+</div>
+{% endif %}
+{% endblock %}

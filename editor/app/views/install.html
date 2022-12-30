@@ -1,0 +1,65 @@
+{% extends _simple %}
+
+{% block title %}Install script{% endblock %}
+
+{% block simple_title %}EasyPage{% endblock %}
+{% block simple_subtitle %}for your purposes{% endblock %}
+{% block simple_description %}
+<p class="text-dark mb-2">
+    The super easy engine, that'll help you
+    generate stub page for your domain
+    or even a simple landing page,
+    without using databases and complex CMS.
+</p>
+<p class="text-dark">
+    Just setup your username and password,
+    toggle a couple of selector and put your text in,
+    press the button and that's it!
+</p>
+{% endblock %}
+
+{% block simple_right %}
+<form class="ajax block-ui" method="post" action="{{ redirectPath('/install') }}">
+    {{ csrfField() }}
+    {{ formMethod('post') }}
+
+    {% $_form = ['name' => 'page', 'method' => 'post', 'csrf' => true, 'url' => redirectPath('/page/' . ($page['id'] ?? 'new'))] %}
+
+    <div class="mb-3">
+        {% $_input = [
+        'name' => 'username',
+        'placeholder' => 'Username',
+        'icon' => 'face',
+        'validation' => true,
+        'required' => true,
+        'description' => 'Please choose good username, that you can remember'] %}
+        {% include form_fields/input %}
+    </div>
+
+    <div class="mb-3">
+        {% $_input = [
+        'name' => 'password',
+        'type' => 'password',
+        'placeholder' => 'Password',
+        'icon' => 'password',
+        'validation' => true,
+        'required' => true,
+        'description' => 'Choose strong password, so no one could break your page'] %}
+        {% include form_fields/input %}
+    </div>
+
+    <div class="mb-3">
+        {% $_input = [
+        'name' => 'password_confirm',
+        'type' => 'password',
+        'placeholder' => 'Confirm password',
+        'icon' => 'password',
+        'validation' => true,
+        'required' => true,
+        'description' => 'Retype password to avoid mistake'] %}
+        {% include form_fields/input %}
+    </div>
+
+    <button type="submit" class="btn btn-primary px-5 mt-2">Install</button>
+</form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends _simple %}
+
+{% block title %}Resource not found{% endblock %}
+
+{% block simple_title %}Error 404{% endblock %}
+{% block simple_subtitle %}file not found{% endblock %}
+{% block simple_description %}
+<p class="text-dark">
+    That's pity, but we can't find requested resource
+</p>
+{% endblock %}
+
+{% block simple_right %}
+Please go back in your browser, or let's go to the <a href="{{ redirectPath('/') }}" title="Go to main page">main
+    page</a>
+{% endblock %}
