@@ -1,5 +1,6 @@
 /.vscode*
 /.devcontainer*
+/_media*
 /editor/app/cache*
 /editor/app/uploads*
 /editor/app/storage*
