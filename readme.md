@@ -9,7 +9,7 @@ There a only 3 steps, that you should do:
 
 It's so easy! Your domain are awesome now.
 
-Just couple of minutes to make oyur domain ready to be wekk known by search engines.
+Just couple of minutes to make oyur domain ready to be well known by search engines.
 Tell them: "I'm here! There will be soon an awesome site!".
 Or, insead, if you want: "Nope. Please, don't crawl now, I'm not ready". It's also available.
 
