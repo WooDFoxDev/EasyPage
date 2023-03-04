@@ -4,12 +4,13 @@
 namespace Easypage\Kernel\Abstractions;
 
 use Closure;
+use Easypage\Kernel\Interfaces\MiddlewareInterface;
 use Easypage\Kernel\Request;
 use Easypage\Kernel\Response;
 
-abstract class Middleware
+abstract class Middleware implements MiddlewareInterface
 {
-    public function __invoke(Request $request, Closure $next)
+    public function __invoke(Request $request, Closure $next): Request|Response
     {
         $input = $this->input($request);
 
