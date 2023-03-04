@@ -2,6 +2,11 @@
 
 namespace Easypage\Kernel\Abstractions;
 
+/**
+ * ObjectsArray
+ * 
+ * Class to maintain arrays of specific class instances
+ */
 abstract class ObjectsArray extends \ArrayObject
 {
     public function __construct(array $items = [])
@@ -23,16 +28,21 @@ abstract class ObjectsArray extends \ArrayObject
         parent::offsetSet($key, $value);
     }
 
+    /**
+     * Check instance for being a right class
+     * Like in example below
+     *
+     * if (!$value instanceof Model) {
+     *     throw new \InvalidArgumentException(
+     *         'Not an instance of Entity'
+     *     );
+     * }
+     *
+     * @param  mixed $value
+     * @return void
+     * @throws InvalidArgumentException
+     */
     protected function validate($value): void
     {
-        /* Check instance for being a right class
-        *  Like in example below
-        *
-        *  if (!$value instanceof Model) {
-        *      throw new \InvalidArgumentException(
-        *          'Not an instance of Entity'
-        *      );
-        *  }
-        */
     }
 }
