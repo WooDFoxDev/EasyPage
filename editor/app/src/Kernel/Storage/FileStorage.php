@@ -179,7 +179,7 @@ class FileStorage extends Storage
         return $entity_id;
     }
 
-    public function removeEntity(string $repository, int $id): bool
+    public function removeEntity(string $repository, int|string $id): bool
     {
         $data_array = $this->readRepository($repository);
 

@@ -48,5 +48,5 @@ interface StorageInterface
      * @param  int $id
      * @return bool
      */
-    public function removeEntity(string $repository, int $id): bool;
+    public function removeEntity(string $repository, int|string $id): bool;
 }
