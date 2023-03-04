@@ -12,7 +12,6 @@ use Easypage\Models\UserModel;
 
 class InstallController extends Controller
 {
-
     public function index(): Response
     {
         return view('install');

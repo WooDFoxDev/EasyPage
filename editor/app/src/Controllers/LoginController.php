@@ -9,7 +9,6 @@ use Easypage\Kernel\Response;
 
 class LoginController extends Controller
 {
-
     public function index(): Response
     {
         if (Authenticator::isLoggedIn()) {

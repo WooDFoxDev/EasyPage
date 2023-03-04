@@ -4,7 +4,6 @@ namespace Easypage\Kernel\Abstractions;
 
 abstract class ObjectsArray extends \ArrayObject
 {
-
     public function __construct(array $items = [])
     {
         foreach ($items as $item) {
