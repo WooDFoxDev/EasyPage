@@ -7,7 +7,7 @@ interface ViewInterface
     /**
      * Enables or disable views cache
      *
-     * @param  mixed $enabled
+     * @param  bool $enabled
      * @return void
      */
     public function setCacheEnabled(bool $enabled): void;
@@ -15,7 +15,7 @@ interface ViewInterface
     /**
      * Sets templates cache location 
      *
-     * @param  mixed $path
+     * @param  string $path
      * @return void
      */
     public function setCachePath(string $path): void;
@@ -23,8 +23,8 @@ interface ViewInterface
     /**
      * Renders template 
      *
-     * @param  mixed $template_name
-     * @param  mixed $data
+     * @param  string $template_name
+     * @param  array $data
      * @return string
      */
     public function render(string $template_name, array $data = []): string;
@@ -32,7 +32,7 @@ interface ViewInterface
     /**
      * Sets templates location
      *
-     * @param  mixed $path
+     * @param  string $path
      * @return void
      */
     public function setTemplatesPath(string $path): void;
