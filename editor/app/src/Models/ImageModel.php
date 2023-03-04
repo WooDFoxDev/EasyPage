@@ -4,8 +4,6 @@ namespace Easypage\Models;
 
 use Easypage\Kernel\Abstractions\Model;
 
-use function PHPUnit\Framework\fileExists;
-
 class ImageModel extends Model
 {
     protected static string $repository = 'images';
