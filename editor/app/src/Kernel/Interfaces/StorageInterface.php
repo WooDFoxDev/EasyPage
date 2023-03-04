@@ -2,7 +2,6 @@
 
 namespace Easypage\Kernel\Interfaces;
 
-use Easypage\Kernel\Abstractions\Storage;
 use Easypage\Kernel\EntitiesArray;
 use Easypage\Kernel\Entity;
 

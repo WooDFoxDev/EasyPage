@@ -8,8 +8,6 @@ use Easypage\Kernel\Response;
 use Easypage\Models\ImageModel;
 use Easypage\Models\PageModel;
 
-use function PHPSTORM_META\map;
-
 class PageController extends Controller
 {
     protected $model_class = PageModel::class;
